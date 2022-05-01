@@ -1,0 +1,11 @@
+Model Information:
+* title:	[Blockbench] Dog House
+* source:	https://sketchfab.com/3d-models/blockbench-dog-house-1c6610b00bee4b0980489d3f0128d803
+* author:	sedona1029 (https://sketchfab.com/sedona1029)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "[Blockbench] Dog House" (https://sketchfab.com/3d-models/blockbench-dog-house-1c6610b00bee4b0980489d3f0128d803) by sedona1029 (https://sketchfab.com/sedona1029) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

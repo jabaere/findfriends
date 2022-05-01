@@ -1,0 +1,15 @@
+
+    const user2 = await fetch('http://localhost:1337/api/users/', {
+      method: 'POST',
+      mode: 'cors',
+      headers: { "Content-Type": "application/json",
+           },
+      body: JSON.stringify({data:{
+        username:'email',
+        email:email,
+        password:12345,
+        confirmed:true
+      }})
+  
+  })
+  console.log("user2>>>>>>>>" + user2)

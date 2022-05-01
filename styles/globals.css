@@ -1,9 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@500&family=Palette+Mosaic&display=swap');
 html,
 body {
   padding: 0;
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+    background-color: #fffbd7;
 }
 
 a {
@@ -13,4 +15,8 @@ a {
 
 * {
   box-sizing: border-box;
+}
+label{
+  color:black !important;
+  font-family: 'Fredoka', sans-serif !important;
 }
