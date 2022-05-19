@@ -1,77 +1,68 @@
-import React,{useState} from 'react';
-import Stack from '@mui/material/Stack';
-import Box from '@mui/material/Box';
-import Button from '@mui/material/Button';
-import InputLabel from '@mui/material/InputLabel';
-import { styled } from '@mui/material/styles';
-import IconButton from '@mui/material/IconButton';
-import PhotoCamera from '@mui/icons-material/PhotoCamera';
-const ImageUpload = ({announcementId,imageUploaded})=> {
-
-  const Input = styled('input')({
-    display: 'none',
+import React, { useState, useContext } from "react";
+import Stack from "@mui/material/Stack";
+import Box from "@mui/material/Box";
+import Button from "@mui/material/Button";
+import InputLabel from "@mui/material/InputLabel";
+import { styled } from "@mui/material/styles";
+import IconButton from "@mui/material/IconButton";
+import PhotoCamera from "@mui/icons-material/PhotoCamera";
+import { Typography } from "@mui/material";
+import LinearProgress from "@mui/material/LinearProgress";
+import AuthContext from "../context/AuthContext";
+import { API_URL } from "./Constants";
+const ImageUpload = ({ announcementId, imageUploaded }) => {
+  const Input = styled("input")({
+    display: "none",
   });
-    const [image,setImage] = useState(null)
+  const [image, setImage] = useState(null);
 
+  const { setImageUpload, handlePictureUpload, imageLoader, statusText } =
+    useContext(AuthContext);
 
-    const handleSubmit = async (e) => {
-        e.prevenDefault();
-        console.log('imageupload')
-        const formData = new FormData()
-        formData.append('files',image);
-        formData.append('ref',"announcements");
-        formData.append('refId',announcementId);
-        formData.append('field','image');
+  const handleFilesChange = (e) => {
+    setImageUpload(e.target.files[0]);
+    setImage(e.target.files[0]);
+    console.log(e.target.files[0]);
+  };
 
-        const res = await fetch(`${API_URL}/api/upload/`,{
-          method:"POST",
-          body:formData
-      
-        })
-        const data= res.json()
+  return (
+    <Box>
+      <Stack direction="row" alignItems="center" spacing={2}>
+        <label htmlFor="contained-button-file">
+          <Input
+            accept="image/*"
+            id="contained-button-file"
+            multiple
+            type="file"
+            onChange={handleFilesChange}
+          />
+          <Button
+            variant="contained"
+            component="span"
+            style={{
+              color: "black",
+              backgroundColor: "#e9d205",
+              fontFamily: "Fredoka",
+            }}
+          >
+            Choose
+          </Button>
+        </label>
 
-        console.log(data)
-
-        if(res.ok){
-          imageUploaded()
-        }
-    }
-  
-
-  
-    const handleFilesChange = (e) => {
-         setImage(e.target.files[0])
-         
-         console.log(e.target.files[0])
-    }
-  
-   
-
-  
-  
-    return(
-    <Box >
-     <Stack direction="row" alignItems="center" spacing={2}>
-      <label htmlFor="contained-button-file">
-        <Input 
-           accept="image/*" 
-           id="contained-button-file" 
-           multiple type="file" 
-           onChange={handleFilesChange}/>
-        <Button 
-           variant="contained" 
-           component="span"
-           style={{
-            color:'black',
+        <Button
+          variant="contained"
+          component="span"
+          style={{
+            color: "black",
             backgroundColor: "#e9d205",
-            fontFamily:'Fredoka'
-            
-        }}
-           >
+            fontFamily: "Fredoka",
+          }}
+          onClick={async () => await handlePictureUpload(image, 2, API_URL)}
+        >
           Upload
         </Button>
-      </label>
-      <label htmlFor="icon-button-file">
+
+        {/*<label htmlFor="icon-button-file">
         <Input 
            accept="image/*" 
            id="icon-button-file" 
@@ -88,9 +79,18 @@ const ImageUpload = ({announcementId,imageUploaded})=> {
         }}/>
         </IconButton>
       </label>
-    </Stack>
-    </Box>
-     )
-  }
+      */}
+      </Stack>
+      <Box sx={{ marginTop: 3 }}>
+        {image ? <Typography variant="caption">{image.name}</Typography> : null}
+      </Box>
 
-  export default ImageUpload
+      <Box sx={{ width: "100%", marginTop: 5, color: "cadetblue" }}>
+        {imageLoader ? <LinearProgress color="inherit" /> : null}
+        {statusText ? <Typography>Ready!</Typography> : null}
+      </Box>
+    </Box>
+  );
+};
+
+export default ImageUpload;

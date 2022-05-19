@@ -1,35 +1,33 @@
-@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@500&family=Palette+Mosaic&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Fredoka:wght@500&family=Palette+Mosaic&display=swap");
 .container {
   padding: 0 2rem;
 }
 
-.loginContainer{
+.loginContainer {
   width: 50%;
-  margin: 150px auto
+  margin: 150px auto;
 }
-.title{
+.title {
   text-align: center;
   margin-top: 50px;
 }
 
-.homeTitle{
+.homeTitle {
   height: 500px;
   display: flex;
   align-items: flex-start;
   justify-content: flex-end;
 }
-.homeTitleH1{
+.homeTitleH1 {
   letter-spacing: 15px;
   font-size: 72px;
   background: -webkit-linear-gradient(cadetblue, #333);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  font-family: 'Palette Mosaic', cursive;
+  font-family: "Palette Mosaic", cursive;
 }
 
-
-
-.loginRegister{
+.loginRegister {
   display: flex;
   align-items: baseline;
   width: 80%;
@@ -38,33 +36,53 @@
   padding: 2rem 0;
   margin-right: 20px;
 }
+.loginRegisterMobile {
+  display: flex;
+  align-items: baseline;
+  width: 100%;
+  justify-content: space-around;
+  font-size: 20px;
+  padding: 2rem;
+  flex-direction: column;
+  height: 300px;
+}
 .loginRegister > a {
   margin-right: 40px;
 }
 
-.header{
+.header {
   display: flex;
-  justify-content:space-between;
+  justify-content: space-between;
   align-items: center;
   width: 100%;
-   
-font-family: 'Fredoka', sans-serif;
 
+  font-family: "Fredoka", sans-serif;
 }
-.textField{
+.MobileHeader {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+
+  font-family: "Fredoka", sans-serif;
+}
+.textField {
   border-color: "#e9d205";
-  font-family: 'Fredoka', sans-serif;
-  
+  font-family: "Fredoka", sans-serif;
 }
-.logo{
+.logo {
   margin-left: 35px;
 }
-
-.canvas{
+.giHollowCat {
+  width: "72px";
+  height: "42px";
+}
+.canvas {
   width: 100vw;
   height: 100vh;
 }
-.scrollArea{
+.scrollArea {
   position: absolute;
   top: 0;
   left: 0;
@@ -73,15 +91,10 @@ font-family: 'Fredoka', sans-serif;
   overflow: auto;
 }
 
-.detailsPage{
+.detailsPage {
   width: 700px;
   margin: 40px;
 }
-
-
-
-
-
 
 .main {
   min-height: 100vh;
@@ -90,17 +103,15 @@ font-family: 'Fredoka', sans-serif;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  
 }
 
 .footer {
   display: flex;
   flex: 1;
   padding: 2rem 0;
-  border-top: 2px solid cadetblue;
   justify-content: center;
   align-items: center;
-  font-family: 'Palette Mosaic', cursive;
+  font-family: "Palette Mosaic", cursive;
 }
 
 .footer a {
@@ -109,9 +120,6 @@ font-family: 'Fredoka', sans-serif;
   align-items: center;
   flex-grow: 1;
 }
-
-
-
 
 .logo {
   height: 1em;
@@ -126,29 +134,47 @@ font-family: 'Fredoka', sans-serif;
     flex-direction: column;
   }
 
-  .loginRegister{
-   
+  .loginRegister {
     font-size: 15px;
   }
-  .loginContainer{
+  .loginContainer {
     width: 80%;
   }
-  .detailsPage{
+  .detailsPage {
     width: auto;
   }
   .loginRegister > a {
     margin-right: 10px;
   }
 
-  .header{
+  .header {
     flex-direction: column;
-    width: 400px;
     padding-top: 20px;
   }
 
-  .loginRegister{
+  .loginRegister {
     width: auto;
-    margin:0
+    margin: 0;
   }
 
+  .footer {
+    display: flex;
+    padding: 1rem;
+    font-size: 15px;
+  }
+  .homeTitleH1 {
+    font-size: 52px;
+  }
+  .canvas {
+    width: 350px !important;
+    height: 300px !important;
+    order: 2;
+  }
+  .homeTitle {
+    height: auto;
+  }
+  .giHollowCat {
+    width: "172px";
+    height: "140px";
+  }
 }

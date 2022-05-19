@@ -11,7 +11,7 @@ import DOMPurify from 'dompurify';
 import {useRouter} from 'next/router';
 import AuthContext from "../context/AuthContext";
 import {API_URL} from "../utils/Constants"
-
+import {AUTH_KEY} from "../utils/Constants"
 export default function AnnouncementCards({title,image,description,announcement,id}) {
   const [userCardOne,setUserCardOne] = useState(null)
   const {AlertUser} = useContext(AuthContext)
@@ -54,6 +54,8 @@ export default function AnnouncementCards({title,image,description,announcement,
           async () => {
              const announcement_res = await fetch(`${API_URL}/api/announcements/${id}`,{
              method:'DELETE',
+             headers: { "Content-Type": "application/json",
+             "Authorization" : `Bearer ${AUTH_KEY}`}
       
           })
     //const announcements =  announcement_res.json()

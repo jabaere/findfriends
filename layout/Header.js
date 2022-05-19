@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState,useEffect } from 'react'
 import styles from '../styles/Home.module.css'
 import Link from 'next/link'
 import Button from '@mui/material/Button';
@@ -13,8 +13,9 @@ import IconButton from '@mui/material/IconButton';
 import Paper from '@mui/material/Paper';
 import SearchIcon from '@mui/icons-material/Search';
 import Avatar from '@mui/material/Avatar';
-
-
+import MenuIcon from '@mui/icons-material/Menu';
+import {useWindowSize} from '../hooks/windowSize'
+import {MobileHeaderModal} from './MobileHeader'
 export const Header = () => {
   const [auth,setAuth] = useState(true)
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -22,9 +23,13 @@ export const Header = () => {
   const [email] = useState('kobriashvili@gmail.com')
   const open = Boolean(anchorEl);
   const router = useRouter()
-  const isAnnnouncements = router.pathname === '/announcements' 
+  const isAnnnouncements = router.pathname === '/announcements/page/[page]' 
 
   const {user,logoutUser,handleSearch} = useContext(AuthContext)
+  const window = useWindowSize()
+  useEffect(()=> {
+    console.log(window)
+  })
 
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -40,6 +45,9 @@ export const Header = () => {
   }
  
   return (
+  <>
+  {
+    window.width > 600 ?
     <header className={styles.header}>
     <div className={styles.logo}>
       <Link href='/'>
@@ -67,15 +75,15 @@ export const Header = () => {
       </Paper>
      }
     </div>
- 
+    
     {!user? <div className={styles.loginRegister}>
           <Link href='/announcements'><a>Find your future friend</a></Link>
           <Link href='/login'><a>login/register</a></Link>
-          <Link href='/announcements/announcement/page=1'><a>test</a></Link>
+         
       </div> 
       :
       <div className={styles.loginRegister}>
-        <Link href='/announcements'><a>Find your future friend</a></Link>
+        <Link href='/announcements/page/1'><a>Find your future friend</a></Link>
         <Link href='/profile'><a>{user.email}</a></Link>
  
       <Avatar 
@@ -140,5 +148,11 @@ export const Header = () => {
 
     }
     </header>
+    :
+    <MobileHeaderModal/>
+  }
+  
+  </>
+   
   )
 }

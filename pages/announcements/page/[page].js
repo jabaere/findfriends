@@ -1,9 +1,9 @@
 import React, { useState,useEffect,useContext } from 'react'
-import announcements from "../announcements.json"
-import AnnouncementCards from "../layout/announcementCards"
-import {fromImageToUrl} from "../utils/Constants"
-import styles from "../styles/Cards.module.css"
-import { API_URL } from '../utils/Constants'
+//import announcements from "../announcements.json"
+import AnnouncementCards from "../../../layout/announcementCards"
+import {fromImageToUrl} from "../../../utils/Constants"
+import styles from "../../../styles/Cards.module.css"
+import { API_URL } from '../../../utils/Constants'
 import Box from '@mui/material/Box';
 import Radio from '@mui/material/Radio';
 import FormControlLabel from '@mui/material/FormControlLabel';
@@ -13,48 +13,31 @@ import RadioGroup from '@mui/material/RadioGroup';
 import { useRouter } from 'next/router'
 import Pagination from '@mui/material/Pagination';
 import Stack from '@mui/material/Stack';
-import AuthContext from "../context/AuthContext";
+import AuthContext from "../../../context/AuthContext";
 import Alert from '@mui/material/Alert';
-
-var number = 1
-
-/*
-export async function loadPosts() {
-  // Call an external API endpoint to get posts
-  const res = await fetch(`${API_URL}/api/announcements?populate=*&pagination[pageSize]=10&pagination[page]=${number}`)
-  const data = await res.json()
-
-  return data
-}
-
-*/
 
  const Announcements = ({announcements}) => {
   const router = useRouter()
   const [category,setCategory]= useState('all')
-  const [page, setPage] = useState(1);
+  const [page, setPage] = useState(null);
   const {searchText} = useContext(AuthContext)
   const [data,setData] = useState([])
+
+
   const handleCheckbox = (e) => {
      setCategory(e.target.value)
      console.log(e.target.value)
-     //router.push(category)
-     //router.replace(url, as, options)
-     //router.push(`/announcements/categories/${e.target.value}`)
+   
   }
 
-  const test = (e) =>{
-      
-  }
-
-
-  const handlePaginationChange = (e, value) => {
+ 
+ const handlePaginationChange = (e, value) => {
     console.log(e)
     console.log(value)
     //number=value
     console.log(number)
     setPage(value);
-    router.push(`announcements/page/${value}`, undefined, { shallow: true });
+    router.push(`${value}`,null, { shallow: false });
   }
 
  
@@ -85,16 +68,9 @@ export async function loadPosts() {
    }
 
    console.log('paginationpage'+ ' ' + announcements.meta.pagination.page)
-    },[searchText,category,number,page]);
+    },[searchText,category,announcements]);
 
-
-
-
-
- 
-
-
-  return (
+return (
     <>
     <div className={styles.cardsContainerHome} id="dasda">
 
@@ -221,8 +197,8 @@ export async function loadPosts() {
       </>
   )
 }
-export async function getStaticProps() {
-    const announcement_res = await fetch(`${API_URL}/api/announcements?populate=*&pagination[pageSize]=10&pagination[page]=${number}`)
+export async function getServerSideProps({params:{page}}) {
+    const announcement_res = await fetch(`${API_URL}/api/announcements?populate=*&pagination[pageSize]=10&pagination[page]=${page}`)
     const announcements = await announcement_res.json()
     //const announcements = await loadPosts()
     //announcements?filters[category][$eq]=cat
