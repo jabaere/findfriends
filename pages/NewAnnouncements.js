@@ -99,11 +99,9 @@ const NewAnnouncement = () => {
     const z = slugRegex.test(x);
     console.log(`${z} damtxveva`)
     console.log(`${fieldCheck} fieldCheck`)
-if(z){
-    values.slug = x
-}else{
-    values.slug = "dejejnr"
-}
+
+    values.slug = z ? x :"dejejnr"
+
     
      
     
