@@ -83,7 +83,7 @@ const NewAnnouncement = () => {
 
   const onSubmit = async (e) => {
     e.preventDefault();
-    setIsLoading(true);
+    
     console.log(values.description.length + " sigrze agweris");
     console.log(imageData);
     //const imageUploadResult = await imageUpload.json();
@@ -99,7 +99,7 @@ const NewAnnouncement = () => {
 
     if(fieldCheck && x.match(slugRegex)){
       
-          
+        setIsLoading(true);
     
     //console.log(ddt)
 
@@ -136,6 +136,8 @@ const NewAnnouncement = () => {
       //console.log(slug)
     }, "4000");
 
+    }else{
+        alert('add some data')
     }
     console.log(x)
     //
