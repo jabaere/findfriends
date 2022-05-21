@@ -96,8 +96,8 @@ const NewAnnouncement = () => {
     values.slug = values.description.split(' ').join('').slice(0,7);
     const x = values.description.split(' ').join('').slice(0,7)
     const slugRegex = /^[A-Za-z0-9-_.~]*$/
-
-    if(fieldCheck && x.match(slugRegex)){
+    const z = x.match(slugRegex)
+    if(fieldCheck && z){
       
         setIsLoading(true);
     

@@ -22,7 +22,9 @@ const UserAnnouncements = ({ announcements }) => {
     // console.log(announcements.data.filter(item => item.attributes.users_permissions_user.data.attributes.email===user.email))
     //item.attributes.users_permissions_user.data
     //item.attributes.users_permissions_user.data.attributes.email
-
+ console.log(announcements.data)
+ console.log(user)
+ console.log('from user announcements')
     if (user) {
       const count = announcements.data
         .filter((item) => item.attributes.email !== null)
