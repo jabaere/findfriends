@@ -28,9 +28,9 @@ const UserAnnouncements = ({ announcements }) => {
         .filter((item) => item.attributes.email !== null)
         .filter((item) => item.attributes.email === user.email);
       setUserAnnouncementNumber(count.length);
-      console.log(count.length);
+      console.log(count.length + ' data length');
     }
-  }, [user, userAnnouncementNumber,announcements]);
+  }, [user,userAnnouncementNumber,announcements]);
 
   return (
     <div className={styles.cardsContainer} id="dasda">

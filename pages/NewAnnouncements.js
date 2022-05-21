@@ -90,11 +90,11 @@ const NewAnnouncement = () => {
     //es
     values.email = user.email;
     values.image = imageData[0];
-    values.slug = values.description.slice(0, 7);
+    values.slug = values.description.split().slice(0, 7);
     //
     setIsLoading(true);
     const ddt = await getToken();
-    if(user){
+   
         const userResponse = await fetch(`${API_URL}/api/users`, {
             method: "POST",
             mode: "cors",
@@ -104,11 +104,11 @@ const NewAnnouncement = () => {
             },
             body: JSON.stringify({ data: {username:user.email,email:user.email,confirmed:true} }),
           });
-          if(userResponse.status === 200) {
+          
               console.log('user added')
               console.log(userResponse)
-          }
-    }
+          
+    
     //console.log(ddt)
 
     const response = await fetch(`${API_URL}/api/announcements/`, {
