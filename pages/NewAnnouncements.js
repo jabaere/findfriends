@@ -90,7 +90,7 @@ const NewAnnouncement = () => {
     //es
     values.email = user.email;
     values.image = imageData[0];
-    values.slug = values.description.split().join().slice(0, 7);
+    values.slug = values.description.split('').join('').slice(0, 7);
     console.log(values.description.split('').join('').slice(0, 7))
     //
     setIsLoading(true);
