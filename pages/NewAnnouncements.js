@@ -47,10 +47,10 @@ const NewAnnouncement = () => {
     number: "",
     price: "",
     category: "",
-    email: localUser,
-    slug: "",
+    email: '',
+    slug: "dejejnr"+ Math.floor(Math.random() * 89),
     image: {},
-    users_permissions_user:{}
+  
     //for user permission
   });
   const { name, number, price, description } = values;
@@ -83,7 +83,8 @@ const NewAnnouncement = () => {
 
   const onSubmit = async (e) => {
     e.preventDefault();
-    const fieldCheck = Object.values(values).some((element) => element === "");
+    const fieldCheck = Object.keys(values).some((element) => element.title ==='' || element.description===''  || element.number ==='' || element.price ==='' || element.category==='' );
+    
     if(fieldCheck){
         setWarningAlert(true)
     }else{
