@@ -91,6 +91,8 @@ const NewAnnouncement = () => {
     values.email = user.email;
     values.image = imageData[0];
     values.slug = values.description.split('').join().slice(0,7);
+    const x = values.description.split().join().slice(0, 7)
+    console.log(x)
     //
     setIsLoading(true);
     const ddt = await getToken();
