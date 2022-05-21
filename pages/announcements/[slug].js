@@ -91,7 +91,7 @@ const Announcements = ({ announcement }) => {
   );
 };
 
-export async function getStaticProps({ params: { slug } }) {
+export async function getServerSideProps({ params: { slug } }) {
   const announcement_res = await fetch(
     `${API_URL}/api/announcements?filters[slug]=${slug}&populate=*`
   );
