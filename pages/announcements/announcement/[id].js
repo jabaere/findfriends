@@ -53,7 +53,7 @@ const EditAnnouncement = ({ statement }) => {
   });
   const { title, number, price, description, category } = values;
   const text = useRef(0);
-
+  const myLoader = ({ src }) => src;
   const inputChange = (e) => {
     const { name, value } = e.target;
 
@@ -69,7 +69,7 @@ const EditAnnouncement = ({ statement }) => {
     e.preventDefault();
     setIsLoading(true);
     const fieldCheck = Object.values(values).some((element) => element === "");
-
+    
     const ddt = await getToken();
     //console.log(ddt)
     values.image = imageData[0];
@@ -101,6 +101,7 @@ const EditAnnouncement = ({ statement }) => {
     }
     const data = await response.json();
     console.log(data);
+    
     /*
     const magic = new Magic(MAGIC_PUBLICK_KEY);
     const didToken = await magic.auth.loginWithMagicLink({ email });
@@ -333,12 +334,14 @@ const EditAnnouncement = ({ statement }) => {
           }}
         >
           <Image
+            loader={myLoader}
             src={fromImageToUrl(
               statement.data.attributes.image.data &&
                 statement.data.attributes.image.data.attributes
             )}
-            style={{ width: "350px", height: "200px" }}
-            alt='friend-image'
+            alt="image"
+            width={450}
+            height={300}
           />
           <Typography variant="h4" align="center">
             {title}

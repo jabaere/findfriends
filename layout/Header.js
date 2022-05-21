@@ -125,7 +125,7 @@ export const Header = () => {
            fontFamily: 'Fredoka'
           }}
            >
-           <Link href='/NewAnnouncement'><a>Add statement</a></Link>  
+           <Link href='/NewAnnouncements'><a>Add statement</a></Link>  
           </MenuItem>
         <MenuItem 
           onClick={handleClose}
