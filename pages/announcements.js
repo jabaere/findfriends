@@ -50,7 +50,7 @@ import Alert from '@mui/material/Alert';
    }
 
    //console.log('paginationpage'+ ' ' + announcements.meta.pagination.page)
-    },[searchText,category,number,page,announcements]);
+    },[searchText,category,page,announcements]);
 
    return (
     <>
