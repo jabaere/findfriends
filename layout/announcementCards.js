@@ -59,7 +59,7 @@ export default function AnnouncementCards({title,image,description,announcement,
       
           })
     //const announcements =  announcement_res.json()
-    router.push('/UserAnnouncements')
+    router.push('/UserAnnouncements',null, { shallow: false })
 }}><Link underline="none">Delete</Link></Button>}
       </CardActions>
     </Card>
