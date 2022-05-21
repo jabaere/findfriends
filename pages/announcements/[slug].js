@@ -104,7 +104,7 @@ export async function getServerSideProps({ params: { slug } }) {
     },
   };
 }
-
+/*
 export async function getStaticPaths() {
   // Get external data from the file system, API, DB, etc.
   const announcement_res = await fetch(
@@ -118,5 +118,6 @@ export async function getStaticPaths() {
     fallback: false,
   };
 }
+*/
 
 export default Announcements;
