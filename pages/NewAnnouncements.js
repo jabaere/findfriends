@@ -49,7 +49,9 @@ const NewAnnouncement = () => {
     category: "",
     email: localUser,
     slug: "",
-    image: {}, //for user permission
+    image: {},
+    users_permissions_user:{}
+    //for user permission
   });
   const { name, number, price, description } = values;
   const text = useRef(0);
@@ -81,7 +83,7 @@ const NewAnnouncement = () => {
 
   const onSubmit = async (e) => {
     e.preventDefault();
-
+    setIsLoading(true);
     console.log(values.description.length + " sigrze agweris");
     console.log(imageData);
     //const imageUploadResult = await imageUpload.json();
@@ -90,25 +92,13 @@ const NewAnnouncement = () => {
     //es
     values.email = user.email;
     values.image = imageData[0];
-    values.slug = values.description.split('').join().slice(0,7);
-    const x = values.description.split().join().slice(0, 7)
-    console.log(x)
-    //
-    setIsLoading(true);
-    const ddt = await getToken();
-   
-        const userResponse = await fetch(`${API_URL}/api/users`, {
-            method: "POST",
-            mode: "cors",
-            headers: {
-              "Content-Type": "application/json",
-              Authorization: `Bearer ${AUTH_KEY}`,
-            },
-            body: JSON.stringify({ data: {username:user.email,email:user.email,confirmed:true} }),
-          });
-          
-              console.log('user added')
-              console.log(userResponse)
+    values.users_permissions_user = user
+    values.slug = values.description.split(' ').join('').slice(0,7);
+    const x = values.description.split(' ').join('').slice(0,7)
+    const slugRegex = /^[A-Za-z0-9-_.~]*$/
+
+    if(fieldCheck && x.match(slugRegex)){
+      
           
     
     //console.log(ddt)
@@ -145,6 +135,13 @@ const NewAnnouncement = () => {
       AlertUser(false);
       //console.log(slug)
     }, "4000");
+
+    }
+    console.log(x)
+    //
+    
+    const ddt = await getToken();
+   
 
     //getAnnouncementId(data.data.id)
     //console.log("getAnnouncementId"+ " " + getAnnouncementId())
