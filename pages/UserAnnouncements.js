@@ -1,41 +1,27 @@
-import React, { useState, useEffect, useContext,useCallback } from "react";
-import announcements from "../announcements.json";
+import React, { useState, useEffect, useContext, useCallback } from "react";
 import AnnouncementCards from "../layout/announcementCards";
 import { fromImageToUrl } from "../utils/Constants";
 import styles from "../styles/Cards.module.css";
 import { API_URL } from "../utils/Constants";
 import Box from "@mui/material/Box";
-import Checkbox from "@mui/material/Checkbox";
-import FormControlLabel from "@mui/material/FormControlLabel";
-import FormGroup from "@mui/material/FormGroup";
-import FormLabel from "@mui/material/FormLabel";
-import Router from "next/router";
 import { useRouter } from "next/router";
 import AuthContext from "../context/AuthContext";
 
 const UserAnnouncements = ({ announcements }) => {
-  const router = useRouter();
   const { user } = useContext(AuthContext);
   const [userAnnouncementNumber, setUserAnnouncementNumber] = useState(0);
   const fetchData = useCallback(() => {
-	  if (user) {
+    if (user) {
       const count = announcements.data
         .filter((item) => item.attributes.email !== null)
         .filter((item) => item.attributes.email === user.email);
       setUserAnnouncementNumber(count.length);
-      console.log(count.length + ' data length');
-      console.log('reload data')
+      console.log(count.length + " data length");
+      console.log("reload data");
     }
-	}, [announcements]);
+  }, [announcements]);
   useEffect(() => {
-    fetchData()
-    // console.log(announcements.data.filter(item => item.attributes.users_permissions_user.data.attributes.email===user.email))
-    //item.attributes.users_permissions_user.data
-    //item.attributes.users_permissions_user.data.attributes.email
-// console.log(announcements.data)
-// console.log(user)
-// console.log('from user announcements')
-    
+    fetchData();
   }, [fetchData]);
 
   return (

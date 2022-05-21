@@ -5,7 +5,6 @@ import { API_URL } from "../utils/Constants";
 import Box from "@mui/material/Box";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
-import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import { CardActionArea } from "@mui/material";
 import Avatar from "@mui/material/Avatar";
@@ -24,24 +23,9 @@ const Profile = ({ announcements }) => {
         .filter((item) => item.attributes.email !== null)
         .filter((item) => item.attributes.email === user.email);
       setUserAnnouncementNumber(count.length);
-      console.log(count.length);
     }
   }, [user]);
 
-  /*
-
-   useEffect(()=>{
-    
-    if (window) {
-      let userEmail = localStorage.getItem('user');
-      let decodedUserEmail = window.atob(decodeURI(userEmail));
-      setLocalUser(decodedUserEmail)
-    }
-    console.log(localUser)
-    console.log(user)
-  },[user])
-
-   */
   return (
     <Box style={{ padding: 10 }}>
       <Card

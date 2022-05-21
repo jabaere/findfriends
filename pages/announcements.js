@@ -1,5 +1,4 @@
 import React, { useState,useEffect,useContext } from 'react'
-import announcements from "../announcements.json"
 import AnnouncementCards from "../layout/announcementCards"
 import {fromImageToUrl} from "../utils/Constants"
 import styles from "../styles/Cards.module.css"
@@ -16,18 +15,6 @@ import Stack from '@mui/material/Stack';
 import AuthContext from "../context/AuthContext";
 import Alert from '@mui/material/Alert';
 
-var number = 1
-
-/*
-export async function loadPosts() {
-  // Call an external API endpoint to get posts
-  const res = await fetch(`${API_URL}/api/announcements?populate=*&pagination[pageSize]=10&pagination[page]=${number}`)
-  const data = await res.json()
-
-  return data
-}
-
-*/
 
  const Announcements = ({announcements}) => {
   const router = useRouter()
@@ -37,64 +24,35 @@ export async function loadPosts() {
   const [data,setData] = useState([])
   const handleCheckbox = (e) => {
      setCategory(e.target.value)
-     console.log(e.target.value)
-     //router.push(category)
-     //router.replace(url, as, options)
-     //router.push(`/announcements/categories/${e.target.value}`)
+    
   }
-
-  const test = (e) =>{
-      
-  }
-
 
   const handlePaginationChange = (e, value) => {
-    console.log(e)
-    console.log(value)
-    //number=value
-    console.log(number)
     setPage(value);
     router.push(`announcements/page/${value}`, undefined, { shallow: true });
   }
 
  
   useEffect(() => {
-    console.log(announcements)
+   
     if(category ==='cat' || category==='dog' ){
       const result = announcements.data
       .filter(a=> a.attributes.category===category)
       .filter(a => a.attributes.title.toLowerCase().includes(searchText.toLowerCase()));
-      console.log('search')
-      console.log('searchtext' + " "+ Boolean(searchText))
-      console.log('category' + " "+category)
-      setData(result)
-      
+       setData(result)
     }else if(searchText) {
-
-      const result = announcements.data
+     const result = announcements.data
      .filter(a => a.attributes.title.toLowerCase().includes(searchText.toLowerCase()));
       setData(result)
-      console.log('searchtext' + " "+ Boolean(searchText))
-      console.log('category' + " "+category)
-      console.log('other category')
-   }else{
-    console.log('other')
-    console.log('searchtext' + " "+ Boolean(searchText))
-      console.log('category' + " "+category)
+    }else{
+   
      setData(announcements.data)
    }
 
-   console.log('paginationpage'+ ' ' + announcements.meta.pagination.page)
+   //console.log('paginationpage'+ ' ' + announcements.meta.pagination.page)
     },[searchText,category,number,page,announcements]);
 
-
-
-
-
- 
-
-
-  return (
+   return (
     <>
     <div className={styles.cardsContainerHome} id="dasda">
 

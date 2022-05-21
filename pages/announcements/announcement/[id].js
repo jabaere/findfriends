@@ -31,16 +31,12 @@ const EditAnnouncement = ({ statement }) => {
     display: "none",
   });
   useEffect(() => {
-    console.log("iddddssssssdddddddd");
-    console.log(statement.data.id);
-    console.log(statement);
-    console.log(window);
     //<img src={fromImageToUrl(statement.data.attributes.image.data && statement.data.attributes.image.data.attributes)}/>
   });
   //const [alert,setAlert] = useState(null)
   const { AlertUser, alert, getAnnouncementId, imageData } =
     useContext(AuthContext);
-  const [shortText, setShortText] = useState("");
+
   const [isLoading, setIsLoading] = useState(false);
   const { getToken } = useContext(AuthContext);
   const [values, setValues] = useState({
@@ -60,16 +56,11 @@ const EditAnnouncement = ({ statement }) => {
     setValues({ ...values, [name]: value });
   };
 
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm();
   const onSubmit = async (e) => {
     e.preventDefault();
     setIsLoading(true);
     const fieldCheck = Object.values(values).some((element) => element === "");
-    
+
     const ddt = await getToken();
     //console.log(ddt)
     values.image = imageData[0];
@@ -101,40 +92,8 @@ const EditAnnouncement = ({ statement }) => {
     }
     const data = await response.json();
     console.log(data);
-    
-    /*
-    const magic = new Magic(MAGIC_PUBLICK_KEY);
-    const didToken = await magic.auth.loginWithMagicLink({ email });
-    const res = await fetch("/api/login", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: "Bearer " + didToken,
-      },
-      body: JSON.stringify({ email }),
-    });
-    if (res.status === 200) {
-      // redirect
-      console.log(res)
-      Router.push("/");
-    } else {
-      // display an error
-    }
-    */
-    //setShortText(values.description.slice(0,25).concat('...'))
-    //values.short_description = shortText
-    // console.log(values.short_description)
-    // console.log(JSON.stringify(values))
   };
 
-  //es es
-  /*
-  const imageUploaded = async () => {
-    const response = await fetch(`${API_URL}/api/announcements/${statement.data.id}`)
-    const data = await response.json()
-    console.log("imageUploaded" + data)
-  }
-  */
   return (
     <Box style={{ display: "flex" }}>
       <Container

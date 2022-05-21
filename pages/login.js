@@ -14,16 +14,15 @@ export default function LoginPage(props) {
   const [email, setEmail] = useState(null);
   const { loginUser } = useContext(AuthContext);
 
-
   const handleChange = (e) => {
     setEmail(e.target.value);
-    console.log(e.target.value);
+    //console.log(e.target.value);
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     loginUser(email);
-    console.log(email);
+    //console.log(email);
   };
   return (
     <>

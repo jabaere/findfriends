@@ -5,11 +5,6 @@ import Button from "@mui/material/Button";
 import Box from "@mui/material/Box";
 import { useForm } from "react-hook-form";
 import styles from "../styles/Home.module.css";
-import TextareaAutosize from "@mui/material/TextareaAutosize";
-import Stack from "@mui/material/Stack";
-import { styled } from "@mui/material/styles";
-import IconButton from "@mui/material/IconButton";
-import PhotoCamera from "@mui/icons-material/PhotoCamera";
 import Alert from "@mui/material/Alert";
 import { API_URL } from "../utils/Constants";
 import AuthContext from "../context/AuthContext";
@@ -26,31 +21,19 @@ const NewAnnouncement = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [localUser, setLocalUser] = useState(null);
   //const [alert,setAlert] = useState(null)
-  const {
-    AlertUser,
-    alert,
-    getAnnouncementId,
-    announcementId,
-    user,
-    image,
-    handlePictureUpload,
-    imageData,
-  } = useContext(AuthContext);
-  const [shortText, setShortText] = useState("");
-  const { getToken } = useContext(AuthContext);
-
+  const { AlertUser, user, imageData } = useContext(AuthContext);
   const [slug, setSlug] = useState("");
-  const [warnigAlert,setWarningAlert] = useState(false)
+  const [warnigAlert, setWarningAlert] = useState(false);
   const [values, setValues] = useState({
     title: "",
     description: "",
     number: "",
     price: "",
     category: "",
-    email: '',
-    slug: "dejejnr"+ Math.floor(Math.random() * 89),
+    email: "",
+    slug: "dejejnr" + Math.floor(Math.random() * 89),
     image: {},
-  
+
     //for user permission
   });
   const { name, number, price, description } = values;
@@ -64,7 +47,7 @@ const NewAnnouncement = () => {
     }
     console.log(localUser);
     console.log(user);
-    console.log(userEmail)
+    console.log(userEmail);
   }, [user]);
   const handleChange = (event) => {
     setCategory(event.target.value);
@@ -83,75 +66,83 @@ const NewAnnouncement = () => {
 
   const onSubmit = async (e) => {
     e.preventDefault();
-    const fieldCheck = Object.keys(values).some((element) => element.title ==='' || element.description===''  || element.number ==='' || element.price ==='' || element.category==='' );
-    
-    if(fieldCheck){
-        setWarningAlert(true)
-    }else{
-        setWarningAlert(false)
-        setIsLoading(true);
+    const fieldCheck = Object.keys(values).some(
+      (element) =>
+        element.title === "" ||
+        element.description === "" ||
+        element.number === "" ||
+        element.price === "" ||
+        element.category === ""
+    );
 
-    //es
-    values.email = user.email;
-    values.image = imageData[0];
-    values.users_permissions_user = user
-  
-    const x = values.description.split(' ').join('').slice(0,7).replace(/[-!$%^&*()_+|~=`{}\[\]:";'<>?,.\/]/g,'f')
-    const slugRegex = /^[A-Za-z0-9-_.~]*$/
-    const z = slugRegex.test(x);
-    values.slug = z ? x :"dejejnr"+ Math.floor(Math.random() * 89)
-
-    const response = await fetch(`${API_URL}/api/announcements/`, {
-      method: "POST",
-      mode: "cors",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${AUTH_KEY}`,
-      },
-      body: JSON.stringify({ data: values }),
-    });
-
-    if (response.status !== 200) {
-      console.log("error");
-      //console.log(JSON.stringify({ data: values }));
+    if (fieldCheck) {
+      setWarningAlert(true);
     } else {
-      console.log("ok");
-      //console.log(response)
-      AlertUser(true);
-     // console.log(response);
-      //const data = await response.json()
+      setWarningAlert(false);
+      setIsLoading(true);
 
-      setIsLoading(false);
-      Router.push("/UserAnnouncements",null, { shallow: false });
+      //es
+      values.email = user.email;
+      values.image = imageData[0];
+      values.users_permissions_user = user;
+      const x = values.description
+        .split(" ")
+        .join("")
+        .slice(0, 7)
+        .replace(/[-!$%^&*()_+|~=`{}\[\]:";'<>?,.\/]/g, "f");
+      const slugRegex = /^[A-Za-z0-9-_.~]*$/;
+      const z = slugRegex.test(x);
+      values.slug = z ? x : "dejejnr" + Math.floor(Math.random() * 89);
+
+      const response = await fetch(`${API_URL}/api/announcements/`, {
+        method: "POST",
+        mode: "cors",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${AUTH_KEY}`,
+        },
+        body: JSON.stringify({ data: values }),
+      });
+
+      if (response.status !== 200) {
+        console.log("error");
+      } else {
+        console.log("ok");
+        AlertUser(true);
+        setIsLoading(false);
+        Router.push("/UserAnnouncements", null, { shallow: false });
+      }
+
+      setTimeout(() => {
+        AlertUser(false);
+        //console.log(slug)
+      }, "4000");
+
+      //const ddt = await getToken();
     }
-
-
-    setTimeout(() => {
-      AlertUser(false);
-      //console.log(slug)
-    }, "4000");
-
-    //const ddt = await getToken();
-    }
- };
+  };
 
   return (
     <>
       <Container maxWidth="xs">
-      {warnigAlert&&
-       <Alert severity="warning" 
-         color="info" sx={{
-             width:'390px',
-             color:'black',
-             marginBottom:5,
-             fontFamily:'Fredoka',
-             "& .MuiAlert-icon ": {
-                 color:'black',
-                },
-                backgroundColor:'#e9d205',
-         }}>
+        {warnigAlert && (
+          <Alert
+            severity="warning"
+            color="info"
+            sx={{
+              width: "390px",
+              color: "black",
+              marginBottom: 5,
+              fontFamily: "Fredoka",
+              "& .MuiAlert-icon ": {
+                color: "black",
+              },
+              backgroundColor: "#e9d205",
+            }}
+          >
             Please fill all data!
-       </Alert>}
+          </Alert>
+        )}
         <form onSubmit={onSubmit}>
           <Box mb={2}>
             <FormControl fullWidth>
@@ -332,7 +323,6 @@ const NewAnnouncement = () => {
           </Button>
         </form>
       </Container>
- 
     </>
   );
 };
