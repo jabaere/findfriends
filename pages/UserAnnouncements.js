@@ -24,6 +24,7 @@ const UserAnnouncements = ({ announcements }) => {
         .filter((item) => item.attributes.email === user.email);
       setUserAnnouncementNumber(count.length);
       console.log(count.length + ' data length');
+      console.log('reload data')
     }
 	}, [announcements]);
   useEffect(() => {
@@ -31,11 +32,11 @@ const UserAnnouncements = ({ announcements }) => {
     // console.log(announcements.data.filter(item => item.attributes.users_permissions_user.data.attributes.email===user.email))
     //item.attributes.users_permissions_user.data
     //item.attributes.users_permissions_user.data.attributes.email
- console.log(announcements.data)
- console.log(user)
- console.log('from user announcements')
+// console.log(announcements.data)
+// console.log(user)
+// console.log('from user announcements')
     
-  }, [user,userAnnouncementNumber,fetchData]);
+  }, [fetchData]);
 
   return (
     <div className={styles.cardsContainer} id="dasda">
