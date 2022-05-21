@@ -15,8 +15,8 @@ import Stack from '@mui/material/Stack';
 import AuthContext from "../context/AuthContext";
 import Alert from '@mui/material/Alert';
 
-
- const Announcements = ({announcements}) => {
+var number = 1
+const Announcements = ({announcements}) => {
   const router = useRouter()
   const [category,setCategory]= useState('all')
   const [page, setPage] = useState(1);
@@ -50,7 +50,7 @@ import Alert from '@mui/material/Alert';
    }
 
    //console.log('paginationpage'+ ' ' + announcements.meta.pagination.page)
-    },[searchText,category,page,announcements]);
+    },[searchText,category,number,page,announcements]);
 
    return (
     <>
