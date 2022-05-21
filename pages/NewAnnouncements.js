@@ -96,7 +96,7 @@ const NewAnnouncement = () => {
   
     const x = values.description.x.split(' ').join('').slice(0,7).replace(/[-!$%^&*()_+|~=`{}\[\]:";'<>?,.\/]/g,'f')
     const slugRegex = /^[A-Za-z0-9-_.~]*$/
-    const z = x.match(slugRegex)
+    const z = slugRegex.test(x);
     console.log(`${z} damtxveva`)
     console.log(`${fieldCheck} fieldCheck`)
     if(!fieldCheck && z){
