@@ -76,7 +76,7 @@ const UserAnnouncements = ({ announcements }) => {
     </div>
   );
 };
-export async function getStaticProps() {
+export async function getServerSideProps() {
   const announcement_res = await fetch(
     `${API_URL}/api/announcements?populate=*`
   );
