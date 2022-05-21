@@ -21,8 +21,8 @@ import FormControl from "@mui/material/FormControl";
 import ImageUpload from "../utils/ImageUpload";
 import Loading from "../layout/Loading";
 import { AUTH_KEY } from "../utils/Constants";
-const newAnnouncement = () => {
-  const [category, setCategory] = React.useState("");
+const NewAnnouncement = () => {
+  const [category, setCategory] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [localUser, setLocalUser] = useState(null);
   //const [alert,setAlert] = useState(null)
@@ -62,7 +62,8 @@ const newAnnouncement = () => {
     }
     console.log(localUser);
     console.log(user);
-  }, []);
+    console.log(userEmail)
+  }, [user]);
   const handleChange = (event) => {
     setCategory(event.target.value);
   };
@@ -85,9 +86,9 @@ const newAnnouncement = () => {
     console.log(imageData);
     //const imageUploadResult = await imageUpload.json();
     const fieldCheck = Object.values(values).some((element) => element === "");
-    //console.log(imageUpload)
+    console.log(localUser)
     //es
-    values.email = localUser;
+    values.email = user.email;
     values.image = imageData[0];
     values.slug = values.description.slice(0, 7);
     //
@@ -116,7 +117,7 @@ const newAnnouncement = () => {
       //const data = await response.json()
 
       setIsLoading(false);
-      Router.push("/userAnnouncements");
+      Router.push("/UserAnnouncements");
     }
 
     // getAnnouncementId(data.id)
@@ -343,4 +344,4 @@ const newAnnouncement = () => {
   );
 };
 
-export default newAnnouncement;
+export default NewAnnouncement;

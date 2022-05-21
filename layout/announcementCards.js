@@ -19,7 +19,7 @@ export default function AnnouncementCards({title,image,description,announcement,
   const router = useRouter()
  
   useEffect(() => {
-   if(router.pathname==="/userAnnouncements"){
+   if(router.pathname==="/UserAnnouncements"){
     setUserCardOne(true);
     AlertUser(false)
     console.log(id)
@@ -59,7 +59,7 @@ export default function AnnouncementCards({title,image,description,announcement,
       
           })
     //const announcements =  announcement_res.json()
-    router.push('/userAnnouncements')
+    router.push('/UserAnnouncements')
 }}><Link underline="none">Delete</Link></Button>}
       </CardActions>
     </Card>

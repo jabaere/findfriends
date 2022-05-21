@@ -85,7 +85,7 @@ export async function loadPosts() {
    }
 
    console.log('paginationpage'+ ' ' + announcements.meta.pagination.page)
-    },[searchText,category,number,page]);
+    },[searchText,category,number,page,announcements]);
 
 
 

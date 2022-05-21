@@ -24,6 +24,7 @@ import ImageUpload from "../../../utils/ImageUpload";
 import { AUTH_KEY } from "../../../utils/Constants";
 import { fromImageToUrl } from "../../../utils/Constants";
 import { useWindowSize } from "../../../hooks/windowSize";
+import Image from "next/image";
 const EditAnnouncement = ({ statement }) => {
   const window = useWindowSize();
   const Input = styled("input")({
@@ -96,7 +97,7 @@ const EditAnnouncement = ({ statement }) => {
       AlertUser(true);
       console.log(alert);
       setIsLoading(false);
-      Router.push("/userAnnouncements");
+      Router.push("/UserAnnouncements");
     }
     const data = await response.json();
     console.log(data);
@@ -331,12 +332,13 @@ const EditAnnouncement = ({ statement }) => {
             marginRight: "50px",
           }}
         >
-          <img
+          <Image
             src={fromImageToUrl(
               statement.data.attributes.image.data &&
                 statement.data.attributes.image.data.attributes
             )}
             style={{ width: "350px", height: "200px" }}
+            alt='friend-image'
           />
           <Typography variant="h4" align="center">
             {title}

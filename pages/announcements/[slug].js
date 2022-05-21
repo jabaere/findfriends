@@ -8,7 +8,9 @@ import Button from "@mui/material/Button";
 import Link from "next/link";
 import Box from "@mui/material/Box";
 import { useRouter } from "next/router";
+import AuthContext from '../../context/AuthContext'
 const Announcements = ({ announcement }) => {
+  const {user} = useContext(AuthContext)
   const myLoader = ({ src }) => src;
   const options = {
     weekday: "short",
@@ -64,8 +66,8 @@ const Announcements = ({ announcement }) => {
       </p>
       <Link
         href={
-          router.pathname === "/userAnnouncements"
-            ? "/userAnnouncements"
+          user
+            ? "/UserAnnouncements"
             : "/announcements"
         }
       >

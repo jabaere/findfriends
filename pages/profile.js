@@ -81,7 +81,7 @@ const Profile = ({ announcements }) => {
               User: {user && user.email}
             </Typography>
             <Box>
-              <Link href="/userAnnouncements">
+              <Link href="/UserAnnouncements">
                 <Typography variant="body2" color="text.secondary">
                   My statements: {userAnnouncementNumber}
                 </Typography>

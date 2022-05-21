@@ -1,7 +1,7 @@
 import React, { useRef } from "react";
 import { useFrame, useLoader, useThree } from "@react-three/fiber";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
-import { OrbitControls } from "@react-three/drei";
+//import { OrbitControls } from "@react-three/drei";
 import * as THREE from 'three'
 export function Model({
   children,

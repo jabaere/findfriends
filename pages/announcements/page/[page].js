@@ -35,7 +35,7 @@ import Alert from '@mui/material/Alert';
     console.log(e)
     console.log(value)
     //number=value
-    console.log(number)
+   // console.log(number)
     setPage(value);
     router.push(`${value}`,null, { shallow: false });
   }

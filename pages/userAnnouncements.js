@@ -13,7 +13,7 @@ import Router from "next/router";
 import { useRouter } from "next/router";
 import AuthContext from "../context/AuthContext";
 
-const userAnnouncements = ({ announcements }) => {
+const UserAnnouncements = ({ announcements }) => {
   const router = useRouter();
   const { user } = useContext(AuthContext);
   const [userAnnouncementNumber, setUserAnnouncementNumber] = useState(0);
@@ -83,4 +83,4 @@ export async function getStaticProps() {
   };
 }
 
-export default userAnnouncements;
+export default UserAnnouncements;

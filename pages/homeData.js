@@ -5,7 +5,7 @@ import { fromImageToUrl } from "../utils/Constants";
 import styles from "../styles/Cards.module.css";
 import styles2 from "../styles/Home.module.css";
 import { Canvas } from "@react-three/fiber";
-import { Html } from "@react-three/drei";
+//import { Html } from "@react-three/drei";
 import { Model } from "../model/Model";
 import HomeContent from "../htmlContent/homeContent";
 

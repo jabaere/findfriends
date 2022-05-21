@@ -125,7 +125,7 @@ export const Header = () => {
            fontFamily: 'Fredoka'
           }}
            >
-           <Link href='/newAnnouncement'><a>Add statement</a></Link>  
+           <Link href='/NewAnnouncement'><a>Add statement</a></Link>  
           </MenuItem>
         <MenuItem 
           onClick={handleClose}
@@ -133,7 +133,7 @@ export const Header = () => {
             fontFamily: 'Fredoka'
           }}
           >
-            <Link href='/userAnnouncements'><a>My statements</a></Link>
+            <Link href='/UserAnnouncements'><a>My statements</a></Link>
           </MenuItem>
         <MenuItem 
          onClick={logoutUser}
