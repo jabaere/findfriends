@@ -94,6 +94,21 @@ const NewAnnouncement = () => {
     //
     setIsLoading(true);
     const ddt = await getToken();
+    if(user){
+        const userResponse = await fetch(`${API_URL}/api/users`, {
+            method: "POST",
+            mode: "cors",
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${AUTH_KEY}`,
+            },
+            body: JSON.stringify({ data: {username:user.email,email:user.email,confirmed:true} }),
+          });
+          if(userResponse.status === 200) {
+              console.log('user added')
+              console.log(userResponse)
+          }
+    }
     //console.log(ddt)
 
     const response = await fetch(`${API_URL}/api/announcements/`, {

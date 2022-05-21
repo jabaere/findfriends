@@ -30,7 +30,7 @@ const UserAnnouncements = ({ announcements }) => {
       setUserAnnouncementNumber(count.length);
       console.log(count.length);
     }
-  }, [user, userAnnouncementNumber]);
+  }, [user, userAnnouncementNumber,announcements]);
 
   return (
     <div className={styles.cardsContainer} id="dasda">
