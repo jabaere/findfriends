@@ -93,14 +93,14 @@ const NewAnnouncement = () => {
     values.email = user.email;
     values.image = imageData[0];
     values.users_permissions_user = user
-    values.slug = values.description.split(' ').join('').slice(0,7);
+  
     const x = values.description.split(' ').join('').slice(0,7)
     const slugRegex = /^[A-Za-z0-9-_.~]*$/
     const z = x.match(slugRegex)
     console.log(`${z} damtxveva`)
     console.log(`${fieldCheck} fieldCheck`)
-    if(fieldCheck){
-      
+    if(!fieldCheck && z){
+        values.slug = z
         setIsLoading(true);
     
     //console.log(ddt)
