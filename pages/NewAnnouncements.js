@@ -90,7 +90,7 @@ const NewAnnouncement = () => {
     //es
     values.email = user.email;
     values.image = imageData[0];
-    values.slug = values.description.split().slice(0, 7);
+    values.slug = values.description.split().join().slice(0, 7);
     //
     setIsLoading(true);
     const ddt = await getToken();
@@ -102,7 +102,7 @@ const NewAnnouncement = () => {
               "Content-Type": "application/json",
               Authorization: `Bearer ${AUTH_KEY}`,
             },
-            body: JSON.stringify({ data: {username:user.email,email:user.email,confirmed:true} }),
+            body: JSON.stringify({ data: {username:user.email,email:user.email,confirmed:true,password:123} }),
           });
           
               console.log('user added')
