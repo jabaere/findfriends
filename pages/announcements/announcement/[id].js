@@ -32,7 +32,7 @@ const EditAnnouncement = ({ statement }) => {
   });
   useEffect(() => {
     //<img src={fromImageToUrl(statement.data.attributes.image.data && statement.data.attributes.image.data.attributes)}/>
-  });
+  },[statement]);
   //const [alert,setAlert] = useState(null)
   const { AlertUser, alert, getAnnouncementId, imageData } =
     useContext(AuthContext);

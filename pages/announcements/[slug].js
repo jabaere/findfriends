@@ -18,7 +18,7 @@ const Announcements = ({ announcement }) => {
   };
   useEffect(() => {
     console.log(router.pathname);
-  });
+  },[announcement]);
 
   const router = useRouter();
   return (
@@ -68,7 +68,7 @@ const Announcements = ({ announcement }) => {
         href={
           user
             ? "/UserAnnouncements"
-            : "/announcements"
+            : "/announcements/page/1"
         }
       >
         <Button
