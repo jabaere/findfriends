@@ -40,7 +40,7 @@ const NewAnnouncement = () => {
   const { getToken } = useContext(AuthContext);
 
   const [slug, setSlug] = useState("");
-
+  const [warnigAlert,setWarningAlert] = useState(false)
   const [values, setValues] = useState({
     title: "",
     description: "",
@@ -83,29 +83,22 @@ const NewAnnouncement = () => {
 
   const onSubmit = async (e) => {
     e.preventDefault();
-    setIsLoading(true);
-    console.log(values.description.length + " sigrze agweris");
-    console.log(imageData);
-    //const imageUploadResult = await imageUpload.json();
     const fieldCheck = Object.values(values).some((element) => element === "");
-    console.log(localUser)
+    if(fieldCheck){
+        setWarningAlert(true)
+    }else{
+        setWarningAlert(false)
+        setIsLoading(true);
+
     //es
     values.email = user.email;
     values.image = imageData[0];
     values.users_permissions_user = user
   
-    const x = values.description.x.split(' ').join('').slice(0,7).replace(/[-!$%^&*()_+|~=`{}\[\]:";'<>?,.\/]/g,'f')
+    const x = values.description.split(' ').join('').slice(0,7).replace(/[-!$%^&*()_+|~=`{}\[\]:";'<>?,.\/]/g,'f')
     const slugRegex = /^[A-Za-z0-9-_.~]*$/
     const z = slugRegex.test(x);
-    console.log(`${z} damtxveva`)
-    console.log(`${fieldCheck} fieldCheck`)
-
-    values.slug = z ? x :"dejejnr"
-
-    
-     
-    
-    //console.log(ddt)
+    values.slug = z ? x :"dejejnr"+ Math.floor(Math.random() * 89)
 
     const response = await fetch(`${API_URL}/api/announcements/`, {
       method: "POST",
@@ -119,65 +112,45 @@ const NewAnnouncement = () => {
 
     if (response.status !== 200) {
       console.log("error");
-      console.log(JSON.stringify({ data: values }));
+      //console.log(JSON.stringify({ data: values }));
     } else {
       console.log("ok");
       //console.log(response)
       AlertUser(true);
-      console.log(response);
+     // console.log(response);
       //const data = await response.json()
 
       setIsLoading(false);
-      Router.push("/UserAnnouncements");
+      Router.push("/UserAnnouncements",null, { shallow: false });
     }
 
-    // getAnnouncementId(data.id)
-    //setSlug(data.id)
-    //console.log(data)
-    console.log(image);
+
     setTimeout(() => {
       AlertUser(false);
       //console.log(slug)
     }, "4000");
 
-    
-    console.log(x)
-    //
-    
-    const ddt = await getToken();
-   
-
-    //getAnnouncementId(data.data.id)
-    //console.log("getAnnouncementId"+ " " + getAnnouncementId())
-    //console.log("announcementId"+announcementId)
-    /*
-    const magic = new Magic(MAGIC_PUBLICK_KEY);
-    const didToken = await magic.auth.loginWithMagicLink({ email });
-    const res = await fetch("/api/login", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: "Bearer " + didToken,
-      },
-      body: JSON.stringify({ email }),
-    });
-    if (res.status === 200) {
-      // redirect
-      console.log(res)
-      Router.push("/");
-    } else {
-      // display an error
+    //const ddt = await getToken();
     }
-    */
-    //setShortText(values.description.slice(0,25).concat('...'))
-    //values.short_description = shortText
-    // console.log(values.short_description)
-    // console.log(JSON.stringify(values))
-  };
+ };
 
   return (
     <>
       <Container maxWidth="xs">
+      {warnigAlert&&
+       <Alert severity="warning" 
+         color="info" sx={{
+             width:'390px',
+             color:'black',
+             marginBottom:5,
+             fontFamily:'Fredoka',
+             "& .MuiAlert-icon ": {
+                 color:'black',
+                },
+                backgroundColor:'#e9d205',
+         }}>
+            Please fill all data!
+       </Alert>}
         <form onSubmit={onSubmit}>
           <Box mb={2}>
             <FormControl fullWidth>
@@ -358,6 +331,7 @@ const NewAnnouncement = () => {
           </Button>
         </form>
       </Container>
+ 
     </>
   );
 };
