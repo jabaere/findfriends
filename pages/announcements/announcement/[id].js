@@ -75,7 +75,7 @@ const EditAnnouncement = ({ statement }) => {
     values.image = imageData[0];
     // values.slug = values.description.slice(0,7)
     const response = await fetch(
-      `http://localhost:1337/api/announcements/${statement.data.id}`,
+      `${API_URL}/api/announcements/${statement.data.id}`,
       {
         method: "PUT",
         mode: "cors",
