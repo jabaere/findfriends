@@ -10,7 +10,7 @@ import Box from "@mui/material/Box";
 import { useRouter } from "next/router";
 import AuthContext from '../../context/AuthContext'
 const Announcements = ({ announcement }) => {
-  const {user} = useContext(AuthContext)
+  const {user,paginationPage} = useContext(AuthContext)
   const myLoader = ({ src }) => src;
   const options = {
     weekday: "short",
@@ -64,19 +64,13 @@ const Announcements = ({ announcement }) => {
         {"-"}
         {announcement.attributes.number}
       </p>
-      <Link
-        href={
-          user
-            ? "/UserAnnouncements"
-            : "/announcements/page/1"
-        }
-      >
+     
         <Button
           type="submit"
           variant="contained"
           color="primary"
           fullWidth
-          onClick={() => console.log(router.pathname)}
+          onClick={() => router.back()}
           style={{
             color: "black",
             backgroundColor: "#e9d205",
@@ -86,7 +80,7 @@ const Announcements = ({ announcement }) => {
         >
           Back
         </Button>
-      </Link>
+     
     </Box>
   );
 };

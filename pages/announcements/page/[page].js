@@ -20,7 +20,7 @@ const Announcements = ({ announcements }) => {
   const router = useRouter();
   const [category, setCategory] = useState("all");
   const [page, setPage] = useState(null);
-  const { searchText } = useContext(AuthContext);
+  const { searchText,handlePagination} = useContext(AuthContext);
   const [data, setData] = useState([]);
 
   const handleCheckbox = (e) => {
@@ -29,6 +29,7 @@ const Announcements = ({ announcements }) => {
 
   const handlePaginationChange = (e, value) => {
     setPage(value);
+    handlePagination(value)
     router.push(`${value}`, null, { shallow: false });
   };
 

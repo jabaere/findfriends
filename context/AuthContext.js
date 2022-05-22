@@ -19,6 +19,16 @@ export const AuthProvider = (props) => {
   const [imageLoader, setImageLoader] = useState(false);
   const [statusText, setStatusText] = useState(false);
   const router = useRouter();
+  const [paginationPage, setPaginationPage] = useState(1)
+
+
+
+  //handle pagination
+
+  const handlePagination = (page) => {
+    setPaginationPage(page)
+  }
+
 
   //get user id
 
@@ -180,6 +190,8 @@ export const AuthProvider = (props) => {
         imageData,
         imageLoader,
         statusText,
+        handlePagination,
+        paginationPage
       }}
     >
       {props.children}

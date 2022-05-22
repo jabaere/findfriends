@@ -42,9 +42,8 @@ export const MobileHeaderModal = () =>  {
   const [email] = useState('kobriashvili@gmail.com')
   // open = Boolean(anchorEl);
   const router = useRouter()
-  const isAnnnouncements = router.pathname === '/announcements' 
-
-  const {user,logoutUser,handleSearch} = useContext(AuthContext)
+  const {user,logoutUser,handleSearch,paginationPage} = useContext(AuthContext)
+  const isAnnnouncements = router.pathname === `/announcements/page/[page]` 
   const window = useWindowSize()
   useEffect(()=> {
     console.log(window)
@@ -99,7 +98,7 @@ export const MobileHeaderModal = () =>  {
            <Box style={{width:'100%', display:'flex',justifyContent:'flex-end',padding:10,cursor:'pointer'}}>
        <CancelTwoToneIcon onClick={handleClose} sx={{color:'gold'}}/>
        </Box>
-    <div className={styles.logo}>
+    <div className={styles.logo} onClick={handleClose}>
       <Link href='/'>
         <a>
           <GiHollowCat style={{width: window.size > 600 ? '72px' : '142px',height:window.size > 600 ?'42px' : '110px',color:'gold'}}/>
@@ -118,7 +117,7 @@ export const MobileHeaderModal = () =>  {
                 color: 'wheat'
                 }}
             >
-                <Link href='/announcements'><a>Find your future friend</a></Link>
+                <Link href={`/announcements/page/${paginationPage}`}><a>Find your future friend</a></Link>
             </Box>
           <Box
             onClick={handleClose} 
@@ -144,7 +143,7 @@ export const MobileHeaderModal = () =>  {
               color: 'wheat'
              }}
           >
-              <Link href='/announcements'><a>Find your future friend</a></Link>
+              <Link href={`/announcements/page/${paginationPage}`}><a>Find your future friend</a></Link>
         </Box>
         <Box 
           onClick={handleClose}

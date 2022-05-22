@@ -10,7 +10,9 @@ import AuthContext from "../context/AuthContext";
 const UserAnnouncements = ({ announcements }) => {
   const { user } = useContext(AuthContext);
   const [userAnnouncementNumber, setUserAnnouncementNumber] = useState(0);
-  const fetchData = useCallback(() => {
+
+  useEffect(() => {
+
     if (user) {
       const count = announcements.data
         .filter((item) => item.attributes.email !== null)
@@ -19,10 +21,7 @@ const UserAnnouncements = ({ announcements }) => {
       console.log(count.length + " data length");
       console.log("reload data");
     }
-  }, [announcements]);
-  useEffect(() => {
-    fetchData();
-  }, [fetchData]);
+  }, [userAnnouncementNumber,user,announcements]);
 
   return (
     <div className={styles.cardsContainer} id="dasda">
@@ -34,7 +33,7 @@ const UserAnnouncements = ({ announcements }) => {
           padding: 1,
         }}
       >
-        <h3>You have {user ? userAnnouncementNumber : 0} statements</h3>
+        <h3>You have {userAnnouncementNumber} statements</h3>
       </Box>
 
       <Box className={styles.cardsContainer2}>
