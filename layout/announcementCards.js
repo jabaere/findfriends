@@ -22,7 +22,7 @@ export default function AnnouncementCards({title,image,description,announcement,
    if(router.pathname==="/UserAnnouncements"){
     setUserCardOne(true);
     AlertUser(false)
-    console.log(id)
+    //console.log(id)
    }
   });
 

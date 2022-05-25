@@ -1,7 +1,6 @@
 import React, { useState,useEffect } from 'react'
 import styles from '../styles/Home.module.css'
 import Link from 'next/link'
-import Button from '@mui/material/Button';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import { useContext } from 'react';
@@ -13,23 +12,17 @@ import IconButton from '@mui/material/IconButton';
 import Paper from '@mui/material/Paper';
 import SearchIcon from '@mui/icons-material/Search';
 import Avatar from '@mui/material/Avatar';
-import MenuIcon from '@mui/icons-material/Menu';
 import {useWindowSize} from '../hooks/windowSize'
 import {MobileHeaderModal} from './MobileHeader'
 export const Header = () => {
-  const [auth,setAuth] = useState(true)
+  
   const [anchorEl, setAnchorEl] = React.useState(null);
-  //const [searchText,setSearchText] = useState(null)
-  const [email] = useState('kobriashvili@gmail.com')
   const open = Boolean(anchorEl);
   const router = useRouter()
   const isAnnnouncements = router.pathname === '/announcements/page/[page]' 
-
   const {user,logoutUser,handleSearch} = useContext(AuthContext)
   const window = useWindowSize()
-  useEffect(()=> {
-    console.log(window)
-  })
+ 
 
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);

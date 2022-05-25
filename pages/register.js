@@ -38,9 +38,6 @@ export default function Register() {
     />
     <Button variant="contained" margin="normal" fullWidth >Register</Button>
 
-      
-  
-
-    </div>
+  </div>
   )
 }

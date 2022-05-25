@@ -36,18 +36,12 @@ export const MobileHeaderModal = () =>  {
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
-  const [auth,setAuth] = useState(true)
   const [anchorEl, setAnchorEl] = useState(null);
-  //const [searchText,setSearchText] = useState(null)
-  const [email] = useState('kobriashvili@gmail.com')
-  // open = Boolean(anchorEl);
   const router = useRouter()
   const {user,logoutUser,handleSearch,paginationPage} = useContext(AuthContext)
   const isAnnnouncements = router.pathname === `/announcements/page/[page]` 
   const window = useWindowSize()
-  useEffect(()=> {
-    console.log(window)
-  })
+ 
 
   const handleOpenMenu = (event) => {
     setAnchorEl(event.currentTarget);

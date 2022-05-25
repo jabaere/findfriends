@@ -1,17 +1,12 @@
-import React, { useState, useEffect, Suspense, useRef } from "react";
-import announcements from "../announcements.json";
-import AccouncementCards from "../layout/announcementCards";
-import { fromImageToUrl } from "../utils/Constants";
+import React, { Suspense } from "react";
 import styles from "../styles/Cards.module.css";
 import styles2 from "../styles/Home.module.css";
 import { Canvas } from "@react-three/fiber";
-//import { Html } from "@react-three/drei";
 import { Model } from "../model/Model";
-import HomeContent from "../htmlContent/homeContent";
+
 
 const HomeData = () => {
-  const [auth, setAuth] = useState(true);
-
+  
   return (
     <div className={styles.cardsContainer} id="dasda">
       <Canvas

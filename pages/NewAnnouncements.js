@@ -17,7 +17,7 @@ import ImageUpload from "../utils/ImageUpload";
 import Loading from "../layout/Loading";
 import { AUTH_KEY } from "../utils/Constants";
 const NewAnnouncement = () => {
-  const [category, setCategory] = useState("");
+  
   const [isLoading, setIsLoading] = useState(false);
   const [localUser, setLocalUser] = useState(null);
   //const [alert,setAlert] = useState(null)
@@ -31,51 +31,37 @@ const NewAnnouncement = () => {
     price: "",
     category: "",
     email: "",
-    slug: "dejejnr" + Math.floor(Math.random() * 89),
+    slug: "", //"dejejnr" + Math.floor(Math.random() * 89)
     image: {},
 
     //for user permission
   });
-  const { name, number, price, description } = values;
+  const { title, number, price, description, category} = values;
   const text = useRef(0);
   useEffect(() => {
     if (window) {
       let userEmail = localStorage.getItem("userEmail");
       let decodedUserEmail = window.atob(decodeURI(userEmail));
-      console.log(decodedUserEmail);
+      //console.log(decodedUserEmail);
       setLocalUser(decodedUserEmail);
     }
-    console.log(localUser);
-    console.log(user);
-    console.log(userEmail);
+    //console.log(localUser);
+    //console.log(user);
+    //console.log(userEmail);
   }, [user]);
-  const handleChange = (event) => {
-    setCategory(event.target.value);
-  };
+ 
   const inputChange = (e) => {
     const { name, value } = e.target;
 
     setValues({ ...values, [name]: value });
   };
 
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm();
-
   const onSubmit = async (e) => {
     e.preventDefault();
-    const fieldCheck = Object.keys(values).some(
-      (element) =>
-        element.title === "" ||
-        element.description === "" ||
-        element.number === "" ||
-        element.price === "" ||
-        element.category === ""
-    );
-
-    if (fieldCheck) {
+    console.log({title, number, price, description, category})
+   console.log(values)
+    if (!title || !number || !price || !description || !category) {
+      e.preventDefault();
       setWarningAlert(true);
     } else {
       setWarningAlert(false);

@@ -1,6 +1,7 @@
 import "../styles/globals.css";
 import Layout from "../layout/Layout";
-
+import React from "react" 
+React.useLayoutEffect = React.useEffect 
 import { AuthProvider } from "../context/AuthContext";
 
 function MyApp({ Component, pageProps }) {
