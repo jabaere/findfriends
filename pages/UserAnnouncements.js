@@ -24,7 +24,7 @@ const UserAnnouncements = ({ announcements }) => {
   }, [userAnnouncementNumber,user,announcements]);
 
   return (
-    <div className={styles.cardsContainer} id="dasda">
+    <div className={styles.cardsContainerUser} id="dasda">
       <Box
         sx={{
           width: 400,
