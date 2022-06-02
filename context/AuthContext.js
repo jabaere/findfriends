@@ -3,7 +3,7 @@ import { Magic } from "magic-sdk";
 import { MAGIC_PUBLICK_KEY } from "../utils/Constants";
 import { useRouter } from "next/router";
 import { serialize } from "cookie";
-import { API_URL } from "../utils/Constants";
+import { API_URL,AUTH_KEY } from "../utils/Constants";
 export const MAX_AGE = 60 * 60 * 8; // 8 hours
 const AuthContext = createContext();
 
@@ -54,6 +54,9 @@ export const AuthProvider = (props) => {
     const res = await fetch(`${API_URL}/api/upload/`, {
       method: "POST",
       body: formData,
+      headers: {
+        Authorization: `Bearer ${AUTH_KEY}`,
+      },
     });
     const data = await res.json();
     setImageData(data);
