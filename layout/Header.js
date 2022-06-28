@@ -20,7 +20,7 @@ export const Header = () => {
   const open = Boolean(anchorEl);
   const router = useRouter()
   const isAnnnouncements = router.pathname === '/announcements/page/[page]' 
-  const {user,logoutUser,handleSearch} = useContext(AuthContext)
+  const {user,logoutUser,handleSearch,paginationPage} = useContext(AuthContext)
   const window = useWindowSize()
  
 
@@ -70,7 +70,7 @@ export const Header = () => {
     </div>
     
     {!user? <div className={styles.loginRegister}>
-          <Link href='/announcements'><a>Find your future friend</a></Link>
+    <Link href={`/announcements/page/${paginationPage}`}><a>Find your future friend</a></Link>
           <Link href='/login'><a>login/register</a></Link>
          
       </div> 
