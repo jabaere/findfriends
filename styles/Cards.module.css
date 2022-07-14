@@ -16,7 +16,7 @@
     height: 100%;
     flex-flow: row;
     flex-wrap: wrap;
-    justify-content: center;
+    margin:50px
   }
 
   .cards{
