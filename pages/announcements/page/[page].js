@@ -20,7 +20,7 @@ const Announcements = ({ announcements }) => {
   const router = useRouter();
   const [category, setCategory] = useState("all");
   const [page, setPage] = useState(1);
-  const { searchText,handlePagination} = useContext(AuthContext);
+  const { searchText, handlePagination } = useContext(AuthContext);
   const [data, setData] = useState([]);
 
   const handleCheckbox = (e) => {
@@ -29,12 +29,11 @@ const Announcements = ({ announcements }) => {
 
   const handlePaginationChange = (e, value) => {
     setPage(value);
-    handlePagination(value)
+    handlePagination(value);
     router.push(`${value}`, null, { shallow: false });
   };
 
   useEffect(() => {
-    
     if (category === "cat" || category === "dog") {
       const result = announcements.data
         .filter((a) => a.attributes.category === category)
@@ -52,7 +51,8 @@ const Announcements = ({ announcements }) => {
       setData(announcements.data);
     }
 
-    announcements.meta !=undefined && console.log("paginationpage" + " " + announcements.meta.pagination.page);
+    announcements.meta != undefined &&
+      console.log("paginationpage" + " " + announcements.meta.pagination.page);
   }, [searchText, category, announcements]);
 
   return (
@@ -170,7 +170,10 @@ const Announcements = ({ announcements }) => {
       </div>
       <Stack spacing={2} sx={{ m: "0 auto" }}>
         <Pagination
-          count={ announcements.meta !=undefined && announcements.meta.pagination.pageCount}
+          count={
+            announcements.meta != undefined &&
+            announcements.meta.pagination.pageCount
+          }
           variant="outlined"
           shape="rounded"
           page={page}
