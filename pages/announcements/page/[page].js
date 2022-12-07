@@ -34,6 +34,7 @@ const Announcements = ({ announcements }) => {
   };
 
   useEffect(() => {
+    
     if (category === "cat" || category === "dog") {
       const result = announcements.data
         .filter((a) => a.attributes.category === category)
@@ -51,7 +52,7 @@ const Announcements = ({ announcements }) => {
       setData(announcements.data);
     }
 
-    console.log("paginationpage" + " " + announcements.meta.pagination.page);
+    announcements.meta !=undefined && console.log("paginationpage" + " " + announcements.meta.pagination.page);
   }, [searchText, category, announcements]);
 
   return (
@@ -169,7 +170,7 @@ const Announcements = ({ announcements }) => {
       </div>
       <Stack spacing={2} sx={{ m: "0 auto" }}>
         <Pagination
-          count={announcements.meta.pagination.pageCount}
+          count={ announcements.meta !=undefined && announcements.meta.pagination.pageCount}
           variant="outlined"
           shape="rounded"
           page={page}
