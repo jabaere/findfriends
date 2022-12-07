@@ -22,6 +22,7 @@
   letter-spacing: 15px;
   font-size: 72px;
   background: -webkit-linear-gradient(cadetblue, #333);
+  background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   font-family: "Palette Mosaic", cursive;
