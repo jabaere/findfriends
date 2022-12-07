@@ -19,7 +19,7 @@ import Alert from "@mui/material/Alert";
 const Announcements = ({ announcements }) => {
   const router = useRouter();
   const [category, setCategory] = useState("all");
-  const [page, setPage] = useState(null);
+  const [page, setPage] = useState(1);
   const { searchText,handlePagination} = useContext(AuthContext);
   const [data, setData] = useState([]);
 
