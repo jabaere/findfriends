@@ -15,7 +15,6 @@ const ImageUpload = ({ announcementId, imageUploaded }) => {
     display: "none",
   });
   const [image, setImage] = useState(null);
-
   const { setImageUpload, handlePictureUpload, imageLoader, statusText } =
     useContext(AuthContext);
 
