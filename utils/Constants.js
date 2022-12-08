@@ -1,4 +1,4 @@
-export const API_URL = process.env.API_URL || "https://backendforfriends.herokuapp.com"//"http://localhost:1337"
+export const API_URL = process.env.API_URL || "https://backendforfriend-production.up.railway.app"//"http://localhost:1337"
 export const IMAGE_URLS = process.env.IMAGE_URLS || "http://localhost:1337/api/announcements?populate=*"
 
 export const MAGIC_PUBLICK_KEY = process.env.MAGIC_PUBLICK_KEY || 'pk_live_FA530A07D18CCA00'
